@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TD3</string>
+    <string name="button_text_value">Lancer le dé</string>
+    <string name="button_next_act2">Passer à l\'activité 2</string>
+    <string name="button_pre_act1">Passez à l\'activité 1</string>
+    <string name="button_next_act3">Passer à l\'activité 3</string>
+    <string name="hint_face_choice_dice1">Nombre de faces dé 1</string>
+    <string name="hint_face_choice_dice2">Nombre de faces dé 2</string>
+    <string name="button_pre_act2">Passer à l\'activité 2</string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">td4</string>
+    <string name="button_login_message">login</string>
+    <string name="button_details_message">détails</string>
+    <string name="button_logout_message">logout</string>
+    <string name="button_ok_message">ok</string>
+    <string name="button_about_message">about</string>
+</resources>
