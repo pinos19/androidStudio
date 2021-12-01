@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/retrofitRequest"
-        android:layout_width="match_parent"
+        android:id="@+id/message_selection_repositories"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:text="Retrofit"
+        android:textSize="36sp"
+        android:text="@string/message_repository"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
          />
-
-    <TextView
-        android:id="@+id/volleyRequest"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/selection_repository"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:text="Volley"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/message_selection_repositories"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+    <Button
+        android:id="@+id/validation_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/message_bouton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selection_repository"
         />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
