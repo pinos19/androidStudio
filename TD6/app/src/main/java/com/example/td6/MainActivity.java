@@ -23,11 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextSelection;
     private Button validateButton;
     private String repository;
-
     public String getRepository() {
         return repository;
     }
-
     public void setRepository(String repository) {
         this.repository = repository;
     }
@@ -39,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setRepository("");
         editTextSelection = findViewById(R.id.selection_repository);
         validateButton = findViewById(R.id.validation_button);
+
         editTextSelection.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
