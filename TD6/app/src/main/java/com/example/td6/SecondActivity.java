@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
@@ -23,14 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class SecondActivity extends AppCompatActivity {
-    private TextView textViewResult;
     private GithubService githubService;
-
+    RecyclerView recyclerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
 
-        textViewResult =findViewById(R.id.text_view_result);
 
         Intent intent = getIntent();
         String repository_str="";
@@ -46,6 +46,7 @@ public class SecondActivity extends AppCompatActivity {
 
         getReposList(repository_str);
 
+
     }
     private void getReposList(String repoString){
         Call<RepoList> call = githubService.searchRepos(repoString);
@@ -53,24 +54,18 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RepoList> call, Response<RepoList> response) {
                 if(!response.isSuccessful() ){
-                    textViewResult.setText("Code : "+response.code());
+                    Log.i("ERROR CODE",String.valueOf(response.code()));
                     return;
                 }
                 RepoList repos = response.body();
-                int taille = repos.getSize();
-                for(int i=0;i<taille;i++){
-                    Repo repo = repos.getItems(i);
-                    String content="";
-                    content += "ID : "+repo.getId() + "\n";
-                    content += "Name : "+repo.getName() +"\n";
-                    content += "Full nam : "+repo.getFull_name()+"\n\n";
-                    textViewResult.append(content);
-
-                }
+                recyclerView = findViewById(R.id.recyclerView);
+                MyAdapter myAdapter = new MyAdapter(repos,SecondActivity.this);
+                recyclerView.setAdapter(myAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(SecondActivity.this));
             }
             @Override
             public void onFailure(Call<RepoList> call, Throwable t) {
-                textViewResult.setText(t.getMessage());
+                Log.i("ON FAILURE",t.getMessage());
             }
         });
     }
